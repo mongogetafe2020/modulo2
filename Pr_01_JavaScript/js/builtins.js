@@ -126,5 +126,116 @@ console.log(frutas);
 frutas.splice(2,0, 'melones'); // añade el elemento
 console.log(frutas);
 
+frutas.reverse();
+console.log(frutas);
+
+frutas.sort();
+console.log(frutas);
+
+let puntuaciones = [13,45,12,98,3];
+puntuaciones.sort((a,b) => b - a);
+console.log(puntuaciones);
+
+console.log(frutas.includes('pomelos'));
+
+console.log(frutas.join(' 😍 '));
+
+let marcasEuropeas = ['Seat','Renault','Mercedes'];
+let marcasAsiaticas = ['Toyota','Mazda'];
+
+let marcas = marcasEuropeas.concat(marcasAsiaticas);
+console.log(marcas);
+
+// para romper el paso por referencia
+let marcasSelec = marcasEuropeas.concat();
+marcasEuropeas.push('Dacia');
+console.log(marcasSelec);
+
+// Spread operator
+
+let marcasCoreanas = ['Hyundai','KIA'];
+marcasAsiaticas.push(...marcasCoreanas);
+console.log(marcasAsiaticas);
+
+// Parametros rest
+
+function setCategorias(...categorias) {
+    return categorias;
+}
+
+let categCalzado = setCategorias('Zapatos','Zapatillas','Botas');
+console.log(categCalzado);
+
+// Ciclo forEach (ECMAScript 5)
+// array.forEach((elemento, i) => {
+    // código con cada elemento
+//})
+
+let jugadores = [
+    {nombre: 'María', apellidos: 'Pérez', puntuacion: 4.6},
+    {nombre: 'Juan', apellidos: 'Gómez', puntuacion: 7},
+    {nombre: 'Laura', apellidos: 'López', puntuacion: 9.6}
+];
+
+console.log(jugadores);
+console.table(jugadores);
+
+jugadores.forEach(jugador => {
+    if (jugador.puntuacion >= 5) {
+        jugador.apto = true;
+    } else {
+        jugador.apto = false;
+    }
+});
+
+console.log(jugadores);
+console.table(jugadores);
+
+// Map (ECMAScript 5)
+// Devuelve un array con el resultado
+// de cada iteracción
+// array.map((elemento, i) => {
+   // código con el elemento
+// })
+
+let nombresJugadores = jugadores.map((jugador, i) => {
+    return (i + 1) + '.- ' + jugador.nombre + ' ' + jugador.apellidos;
+});
+console.log(nombresJugadores);
+
+// Filter
+
+let jugadoresAptos = jugadores.filter((jugador) => {
+    return jugador.puntuacion >= 5;  // expresión de condición
+});
+console.log(jugadoresAptos);
+
+// Sobre undefined push() lanza error
+let array1 = [];
+array1.push('Getafe');
+
+// Reduce (ECMAScript 5)
+// Recorre los valores y en cada ciclo de iteración
+// actualiza un valor de inicio y otro de fin a partir
+// de los valores de cada elemento de acuerdo al código
+
+// array.reduce((inicio, fin) => {
+//     código con inicio y fin
+// })
+
+jugadores[0].puntuacion = [4.5, 6.5, 7.8];
+jugadores[1].puntuacion = [9.4, 3.5, 6.8];
+jugadores[2].puntuacion = [7.5, 4.5, 7.9];
+
+jugadores.forEach((jugador, i) => {
+    let suma = jugador.puntuacion.reduce((a, b) => {
+        return a + b;
+    });
+    jugadores[i].promedio = suma / jugador.puntuacion.length;
+});
+console.table(jugadores);
+
+
+
 
 
